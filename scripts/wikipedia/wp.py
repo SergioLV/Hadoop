@@ -1,17 +1,3 @@
-# import wikipedia as wiki
-
-# jdm = ["mazda", "nissan", "toyota","mitsubishi","suzuki"]
-# luxury = ["bentley", "ferrari", "lamborghini", "lotus", "bugatti"]
-
-# for brand in jdm:
-#     f = open(f"carpeta1/{brand}.txt","a")
-#     wp = wiki.page(brand)
-#     f.write(brand + "\n" + wp.content)
-
-# for brand in luxury:
-#     f = open(f"carpeta2/{brand}.txt","a")
-#     wp = wiki.page(brand)
-#     f.write(brand + "\n" + wp.content)
 import requests
 import json
 
@@ -39,10 +25,10 @@ for entrada in entradas:
     texto = '{}<splittername>{}'.format(i, json.dumps(texto))
 
     if i <= 5:
-        with open(f'carpeta1/{entrada}.txt', 'w') as f:
+        with open(f'./carpeta1/{entrada}.txt', 'w') as f:
             f.write(texto)
     else:
-        with open(f'carpeta2/{entrada}.txt', 'w') as f:
+        with open(f'./carpeta2/{entrada}.txt', 'w') as f:
             f.write(texto)
     i = i + 1
 
