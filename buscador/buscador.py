@@ -13,6 +13,9 @@ dict = {
     "9":"https://es.wikipedia.org/wiki/lotus",
     "10":"https://es.wikipedia.org/wiki/bugatti",
 }
+
+result = []
+
 for line in sys.stdin:
     if(line.split()[0] == sys.argv[1]):
         # obtener ls
@@ -20,12 +23,17 @@ for line in sys.stdin:
         max = 0
         res = 0
         for tuple in aux[1:]:
+            result.append(dict[str(eval(tuple)[0])])
             if eval(tuple)[1] > max:
+                result.remove(dict[str(eval(tuple)[0])])
                 max = eval(tuple)[1]
                 res = eval(tuple)[0]
-try:    
-    print(res)
-    print(dict[str(res)])
-    print(sys.argv[1])
+                result.insert(0, dict[str(res)])
+try:
+    for idx, value in enumerate(result):
+        if idx == 0:
+            print("Most coincidences ("+ str(idx+1)+ "): " + value)
+            continue
+        print(str(idx+1)+ ": " + value)
 except:
     print("palabra no encontrada!")
